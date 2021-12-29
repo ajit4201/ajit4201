@@ -1,0 +1,43 @@
+class team:
+    def __init__(self,owner,value,idd,name):
+        self.owner=owner
+        self.idd=idd
+        self.name=name
+        self.value=value
+class league:
+    def __init__(self,lname,tlist):
+        self.lname=lname
+        self.tlist=tlist
+    def findminimumteambyid(self):
+        if not self.tlist:
+            return None
+        return min(self.tlist,key=lambda x:x.idd)
+    def sortteambyid(self):
+        if not self.tlist:
+            return None
+        self.tlist.sort(key=lambda x:x.idd)
+        return self.tlist
+
+n=int(input())
+tlist=[]
+for i in range(n):
+    owner=input()
+    value=float(input())
+    idd=int(input())
+    name=input()
+    tlist.append(team(owner,value,idd,name))
+cso=league("PRA 28 December 2021",tlist)
+t=cso.findminimumteambyid()
+if(t==None):
+    print("No Data Found")
+else:
+    print(t.owner)
+    print(t.value)
+    print(t.idd)
+    print(t.name)
+x=cso.sortteambyid()
+if x==None:
+    print("No Data Found")
+else:
+    for i in x:
+        print(i.idd)
